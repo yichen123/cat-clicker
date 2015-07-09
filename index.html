@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <img src="img/cat.jpg" id="mycat">
-    <h1>Click cat to increment number</h1>
-    <p id="counter">
-      0
-    </p>
-    <script>
-      var pic = document.getElementById("mycat");
-      pic.addEventListener('click', function(){
-        var counterTag = document.getElementById("counter");
-        counterTag.innerText = parseInt(counterTag.innerText) + 1;
-        console.log(counterTag.innerText);
-      });
-    </script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <link href="style/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <h1>Click cat to increment number</h1>
+  <div class="row">
+    <div class="imageContainer">
+      <img src="img/cat.jpg" id="mycat1">
+      <p id="cat1Name"></p>
+    </div>
+    <div class="imageContainer">
+      <img src="img/cat2.jpg" id="mycat2">
+      <p id="cat2Name"></p>
+    </div>
+  </div>
+
+  <p id="counter">
+    0
+  </p>
+  <script src="js/main.js"></script>
+
+</body>
+
 </html>
