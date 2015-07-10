@@ -1,13 +1,34 @@
+body {
+  text-align: center;
+}
 .row {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 }
 
+.catContainer {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+}
 .imageContainer {
   width: 50%;
+  height: 100%;
+}
+img {
+  max-height: 100%;
+  max-width: 100%;
+
 }
 
-img {
-  width: 100%;
+.nameContainer {
+  height: 45%;
+  width: 45%;
+}
+
+.counterContainer {
+  height: 45%;
+  width: 45%;
 }
