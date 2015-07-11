@@ -26,21 +26,16 @@ document.addEventListener('DOMContentLoaded', function() {
             var num = button.id;
             return model[num].img;
         },
-        changePicId: function(button) {
-            var num = button.id;
-            var pic = document.getElementsByTagName('img')[0];
-            pic.id = num;
+        getNameFromButton: function(button) {
+            return model[button.id].name;
         },
 
-        displayCounter: function(pic) {
-            var counterContainer = document.getElementsByTagName('h3')[0];
-            counterContainer.innerHTML = model[pic.id].counter;
+        getCounterFromPic: function(pic) {
+            return model[pic.id].counter;
         },
         incrementCounter: function(pic) {
             model[pic.id].counter++;
-            octopus.displayCounter(pic);
         },
-
         init: function() {
             for (var i = 0, len = model.length; i < len; i++) {
                 var button = view.buttonView.buttonBuilder(model[i].name, i);
@@ -48,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             view.buttonView.init();
             view.picView.init();
-
         }
     };
 
@@ -60,14 +54,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.innerText = name;
                 button.id = num;
                 buttonList.appendChild(button);
-                return button;
+            },
+            displayName: function(button) {
+                var nameContainer = document.getElementById('nameContainer');
+                var name = model[button.id].name;
+                nameContainer.innerHTML = name;
+            },
+            changePicIdByButton: function(button) {
+                var num = button.id;
+                var pic = document.getElementsByTagName('img')[0];
+                pic.id = num;
             },
             click: function(button) {
+                view.buttonView.displayName(button);
                 var img = octopus.getPicFromButton(button);
                 var pic = document.getElementsByTagName('img')[0];
                 pic.src = img;
-                octopus.changePicId(button);
-                octopus.displayCounter(pic);
+                view.buttonView.changePicIdByButton(button);
+                view.picView.displayCounter(pic);
             },
             init: function() {
                 buttons = document.getElementsByTagName('button');
@@ -79,9 +83,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         picView: {
+            displayCounter: function(pic) {
+                var counterContainer = document.getElementsByTagName('h3')[0];
+                var counter = octopus.getCounterFromPic(pic);
+                counterContainer.innerHTML = counter;
+            },
             click: function(pic) {
                 if (pic.id) {
                     octopus.incrementCounter(pic);
+                    view.picView.displayCounter(pic);
                 }
             },
             init: function() {

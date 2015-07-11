@@ -7,7 +7,7 @@ body {
   width: 100%;
 }
 
-#picContainer {
+#picContainer, #displayBox{
   width: 50%;
 }
 
@@ -16,6 +16,6 @@ img {
   max-width: 100%;
 }
 
-#counterContainer {
-  width: 50%;
+#counterContainer, #nameContainer {
+  height:50px;
 }
