@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             displayName: function(button) {
                 var nameContainer = document.getElementById('nameContainer');
-                var name = model[button.id].name;
+                var name = octopus.getNameFromButton(button);
                 nameContainer.innerHTML = name;
             },
             changePicIdByButton: function(button) {
