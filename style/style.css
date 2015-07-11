@@ -7,28 +7,15 @@ body {
   width: 100%;
 }
 
-.catContainer {
-  width: 100%;
-  height: 200px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.imageContainer {
+#picContainer {
   width: 50%;
-  height: 100%;
 }
+
 img {
   max-height: 100%;
   max-width: 100%;
-
 }
 
-.nameContainer {
-  height: 45%;
-  width: 45%;
-}
-
-.counterContainer {
-  height: 45%;
-  width: 45%;
+#counterContainer {
+  width: 50%;
 }

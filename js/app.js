@@ -22,23 +22,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }];
 
     var octopus = {
+        getModelI: function(button) {
+            num = button.id;
+            return model[num];
+        },
         init: function() {
             for (var i = 0, len = model.length; i < len; i++) {
-                view.buttonView.buttonBuilder(model[i].name);
+                var button = view.buttonView.buttonBuilder(model[i].name, i);
+                button.addEventListener('click', function(){
+                    var model = octopus.getModelI(this);
+                    view.buttonView.click(model.img, model.counter);
+                });
             }
         }
     };
 
     var view = {
         buttonView: {
-            buttonBuilder: function(name) {
+            buttonBuilder: function(name, num) {
                 var buttonList = document.getElementById('buttonList');
                 var button = document.createElement('button');
                 button.innerText = name;
+                button.id = num;
                 buttonList.appendChild(button);
+                return button;
             },
+            click: function(img, counter) {
+                var pic = document.getElementById('pic');
+                pic.src = img;
+                var counterContainer = document.getElementsByTagName('h3')[0];
+                counterContainer.innerHTML = "click counter = " + counter;
+            }
+
+
         },
-        picView: {}
+        picView: {
+            click: function(counter) {
+                var counterContainer = document.getElementById(counterContainer);
+                counterContainer.innerText = "counter = " + counter;
+            }
+        }
     };
 
     octopus.init();
