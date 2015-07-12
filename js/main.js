@@ -28,11 +28,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     };
 
+//octopus
     var octopus = {
-        setCurrent: function(name, counter, img) {
-            model.currentCat.name = name;
-            model.currentCat.counter = counter;
-            model.currentCat.img = img;
+        setCurrentWithButton: function(cat) {
+            model.currentCat.name = cat.name;
+            model.currentCat.counter = cat.counter;
+            model.currentCat.img = cat.img;
+        },
+        getCurrentCat: function(){
+            return model.currentCat;
+        },
+        getCats: function() {
+            return model.cats;
+        }
+
+    }
+
+    //view
+    var view = {
+        buttonView: {
+            buttonBuidler: function(name) {
+
+            }
         }
     }
 });
